@@ -1,3 +1,7 @@
+[![make.fun · btc-race-24h-20261117-0603](https://make.fun/badge/btc-race-24h-20261117-0603.svg)](https://make.fun/bounty/btc-race-24h-20261117-0603?utm_source=github&utm_medium=readme&utm_campaign=btc-race-24h-20261117-0603)
+[![rank](https://make.fun/badge/btc-race-24h-20261117-0603/Gorustt/btc-race-24h-20261117-0603/rank.svg)](https://make.fun/bounty/btc-race-24h-20261117-0603/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=btc-race-24h-20261117-0603)
+[![reward](https://make.fun/badge/btc-race-24h-20261117-0603/Gorustt/btc-race-24h-20261117-0603/reward.svg)](https://make.fun/bounty/btc-race-24h-20261117-0603?utm_source=github&utm_medium=readme&utm_campaign=btc-race-24h-20261117-0603)
+
 # Dip-Ladder BTC Bot — make.fun btc-race-24h-20261117-0603
 
 [![make.fun](https://img.shields.io/badge/make.fun-btc--race--24h--20261117--0603-blue)](https://make.fun/bounty/btc-race-24h-20261117-0603)
@@ -15,7 +19,7 @@ the bounce — and sit in cash the rest of the time.
 - **Reference:** 300-minute EMA of 1-minute closes (~5 hours).
 - **Arm 1:** close 0.5% below EMA300 → buy with half the cash.
 - **Arm 2:** close 0.8% below EMA300 → buy with the rest.
-- **Exit:** close 1.6% above the average entry (take profit), 1.2% below
+- **Exit:** close 1.8% above the average entry (take profit), 1.2% below
   it (stop loss), or 240 bars held (timeout). No new entries after bar
   1380, so a position is never opened with no time to exit.
 - **Entry price** is the position's average cost from the account state,
@@ -35,15 +39,15 @@ to catch the real bounces and rare enough to stay out of the chop.
 
 ```
 cd scratch && python3 replay.py ../repo/main.py
-run1: PnL +22.553155 USDC  trades 8  fees 2.023702  maxDD 0.7328%  final cash 1022.553155
-run2: PnL +22.553155 USDC  trades 8  fees 2.023702  maxDD 0.7328%  final cash 1022.553155
+run1: PnL +24.325331 USDC  trades 8  fees 2.025828  maxDD 0.7334%  final cash 1024.325331
+run2: PnL +24.325331 USDC  trades 8  fees 2.025828  maxDD 0.7334%  final cash 1024.325331
 deterministic (action logs identical): True
 ```
 
-Robustness (same bot, other windows): first half +19.19, second half
-+3.05, −1% drift +19.25, +1% drift +12.47 — every stress check positive.
-Parameters sit on a flat plateau (dip 0.004–0.0055, TP 0.012–0.016,
-EMA 240–360 all give +20 to +23 USDC), not on an edge.
+Robustness (same bot, other windows): first half +21.01, second half
++3.05, −1% drift +19.26, +1% drift +10.50 — every stress check positive.
+Parameters sit on a flat plateau (dip 0.004–0.0055, TP 0.012–0.018,
+EMA 240–360 all give +20 to +24 USDC), not on an edge.
 
 ## Layout
 

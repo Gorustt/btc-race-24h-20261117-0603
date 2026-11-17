@@ -7,15 +7,17 @@ range-bound tape: 1-minute return stdev 0.064%, no capitulation, worst
 LOSE (they buy into the grind and bleed on fees), and a deep-dip sniper
 never fires at all. What works is buying a genuine excursion below a SLOW
 trend: the close 0.5% below a 300-minute EMA, then scaling in with the
-second half if it falls to 0.8% below, and selling the bounce at +1.6%
+second half if it falls to 0.8% below, and selling the bounce at +1.8%
 over the average entry (or -1.2% stop, or after 240 bars). Three round
 trips on the dev window, all winners, max drawdown 0.73%.
 
 Grid-searched on the dev window with an exact local replay harness, picked
 for robustness, not dev rank: the parameters sit on a flat plateau
-(dip 0.004-0.0055, TP 0.012-0.016, EMA 240-360 all give +20 to +23 USDC),
-and every stress check stays positive (first half +19.19, second half
-+3.05, -1% drift +19.25, +1% drift +12.47). The final race window is
+(dip 0.004-0.0055, TP 0.012-0.018, EMA 240-360 all give +20 to +24 USDC),
+and every stress check stays positive (first half +21.01, second half
++3.05, -1% drift +19.26, +1% drift +10.50). TP 0.018 (revised from 0.016)
+holds round trip 1 two bars longer for a higher exit; TP 0.019 was
+rejected — its -1% drift check goes negative. The final race window is
 unseen, so the bot is deliberately selective: if the race window has no
 excursion below the slow EMA it stays in cash rather than bleeding out
 in the grind.
@@ -36,7 +38,7 @@ SYMBOL = None  # set from hello: the competition's single symbol
 EMA_PERIOD = 300  # slow trend: 300 one-minute closes (~5 hours)
 DIP1 = 0.005  # first arm: close this far below EMA300, half the cash
 DIP2 = 0.008  # second arm: close this far below EMA300, the rest
-TAKE_PROFIT = 0.016  # sell when close is this far above the average entry
+TAKE_PROFIT = 0.018  # sell when close is this far above the average entry
 STOP_LOSS = 0.012  # sell when close is this far below the average entry
 MAX_HOLD = 240  # sell after this many bars held, whatever the price
 MAX_SLIPPAGE_BPS = 200  # 2%: covers the largest 1-minute move seen (~0.65%)
